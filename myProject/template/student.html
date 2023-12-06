@@ -28,13 +28,14 @@
 </head>
 <body>
 
-<h1>A Fancy Table</h1>
+<h1>A Student Table</h1>
 
 <table id="customers">
   <tr>
     <th>Name</th>
-    <th>Department/th>
+    <th>Department</th>
     <th>Country</th>
+    <th>Profile Picture</th>
     <th>Actions</th>
   </tr>
 
@@ -44,6 +45,7 @@
     <td>{{i.Name}}</td>
     <td>{{i.Department}}</td>
     <td>{{i.City}}</td>
+    <td><img  src="/{{i.profile_pic}}" alt="User Image" height="40px" width="50px"></td>
     <td>
         <a href=" {% url 'editStudent' i.id %} ">Edit</a>
         <a href=" {% url 'deleteStudent' i.id %} ">Delete</a>
@@ -56,12 +58,12 @@
 
 
 
-<form action="" method="POST">
+<form action="" method="POST", enctype="multipart/form-data">
 
     {% csrf_token %}
 
 <table>
-    {{form}}
+  {{form.as_p}}
 </table>
 
 <input type="submit",value="submit">
